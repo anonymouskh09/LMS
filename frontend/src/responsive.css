@@ -1,0 +1,186 @@
+/* Global Mobile Responsive Styles for LMS */
+
+/* Mobile Menu Button - Fixed position for accessibility */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: flex !important;
+    position: fixed !important;
+    top: 16px !important;
+    left: 16px !important;
+    z-index: 1100 !important;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    background: #4f46e5;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+}
+
+/* Base Mobile Styles */
+@media (max-width: 768px) {
+  /* Layout Classes */
+  .sidebar {
+    position: fixed !important;
+    left: -100% !important;
+    top: 0 !important;
+    height: 100vh !important;
+    width: 280px !important;
+    z-index: 1000 !important;
+    transition: left 0.3s ease !important;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1) !important;
+  }
+
+  .sidebar.mobile-open {
+    left: 0 !important;
+  }
+
+  .main-content, 
+  main {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    padding: 16px !important;
+    padding-top: 70px !important; /* Extra space for menu button */
+    min-width: 100% !important;
+  }
+
+  /* Right Panel - Profile/Stats Panel */
+  .right-panel {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    margin-top: 24px !important;
+    border-left: none !important;
+    border-top: 1px solid #e2e8f0 !important;
+    padding: 24px 16px !important;
+    display: block !important;
+    box-shadow: none !important;
+  }
+
+  /* Responsive tables */
+  .table-container,
+  table-wrapper {
+    overflow-x: auto !important;
+    width: 100% !important;
+    margin-bottom: 20px;
+  }
+
+  table {
+    display: table !important; /* Keep as table but allow scroll */
+    min-width: 600px !important; /* Force content width for scroll */
+    font-size: 13px !important;
+  }
+
+  table th, table td {
+    padding: 12px 10px !important;
+  }
+
+  /* Stats Grid Responsive */
+  .stats-grid,
+  [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Charts reflow */
+  [style*="display: grid"][style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Header adjustments */
+  header,
+  .header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+
+  .header-actions {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Text & Sizing */
+  h1 { font-size: 22px !important; }
+  h2 { font-size: 18px !important; }
+  h3 { font-size: 16px !important; }
+
+  /* Modal adjustments */
+  .modal,
+  [style*="width: 520px"],
+  [style*="width: 450px"] {
+    width: 95% !important;
+    max-width: 95vw !important;
+    padding: 24px 16px !important;
+  }
+
+  .modal-form .row,
+  .row {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 769px) and (max-width: 1100px) {
+  .sidebar {
+    width: 240px !important;
+  }
+  
+  .main-content,
+  main {
+    margin-left: 240px !important;
+    margin-right: 0 !important; /* Hide/Stack right panel on tablet too if tight */
+  }
+
+  .right-panel {
+    display: none !important; /* Hide on tablets to save space */
+  }
+
+  .stats-grid,
+  [style*="grid-template-columns: repeat(4"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  main, .main-content {
+    padding: 12px !important;
+    padding-top: 60px !important;
+  }
+
+  .metric-card,
+  .stat-card {
+    padding: 16px !important;
+  }
+
+  .metric-value {
+    font-size: 1.3rem !important;
+  }
+}
+
+/* Desktop right panel spacing - Only for layouts that have a right panel */
+@media (min-width: 1101px) {
+  main, .main-content {
+      margin-left: 280px !important;
+      margin-right: 0 !important; /* Default to 0 */
+  }
+  
+  /* Only add margin if a right panel is present (modern browsers) */
+  body:has(.right-panel) main,
+  body:has(.right-panel) .main-content {
+      margin-right: 320px !important;
+  }
+}
+
+/* Animations for Mobile Menu */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

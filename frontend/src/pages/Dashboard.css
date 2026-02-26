@@ -1,0 +1,248 @@
+/* Dashboard - Premium Professional Design */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary-black: #000000;
+  --bg-light: #F8F9FD;
+  --border-color: #EDEDED;
+  --text-main: #1A1D1F;
+  --text-muted: #6F767E;
+  --sidebar-width: 260px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-light);
+}
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-light);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-main);
+}
+
+/* Sidebar Styles - Modern White (Overrides removed to allow dashboard-specific sidebar colors) */
+.sidebar {
+  width: var(--sidebar-width);
+  /* background removed to allow dashboard-specific styling */
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border-color);
+  position: fixed;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.sidebar-header {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--primary-black);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.menu-item:hover {
+  background: #F4F4F4;
+  color: var(--primary-black);
+}
+
+.menu-item.active {
+  background: var(--primary-black);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  padding: 40px;
+  margin-left: var(--sidebar-width);
+  background: var(--bg-light);
+  min-height: 100vh;
+}
+
+/* Professional Blocks - Black & White Style */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.stat-label {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--primary-black);
+  margin-top: 10px;
+  display: block;
+}
+
+/* Performance Box & Chart Fix */
+.content-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 24px;
+}
+
+.content-card h2, .content-card h3 {
+  color: var(--text-main);
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+/* Data Tables Fix (Visibility Focus) */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 16px;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 700;
+  border-bottom: 1px solid var(--border-color);
+  text-transform: uppercase;
+  background: #FAFAFA;
+}
+
+.data-table td {
+  padding: 18px 16px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main); 
+  background: #ffffff;
+}
+
+.data-table tr:hover td {
+  background-color: #F9F9F9;
+}
+
+/* Action Buttons */
+.action-btn {
+  padding: 10px 20px;
+  background: var(--primary-black);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background: #FEE2E2;
+  color: #DC2626;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Modal Styling */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+  color: var(--primary-black);
+}
+
+/* Input Fields inside Modals */
+input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  margin-top: 8px;
+  outline: none;
+  color: var(--text-main);
+  background: #ffffff;
+}
+
+input:focus {
+  border-color: var(--primary-black);
+}
+
+/* Custom Add Button for Classes/Teachers */
+.add-btn-premium {
+  background: var(--primary-black);
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
