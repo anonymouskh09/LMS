@@ -1,16 +1,18 @@
 import { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../responsive.css'
 import {
   House, BookOpen, PlusCircle, CheckCircle, GraduationCap,
   Clock, UserCircle, SignOut, CalendarBlank, Trash,
   List, ChalkboardTeacher, UserPlus, X, ClipboardText, Pulse, 
   PencilSimple, FileText, DotsThreeOutline, ChartLine, Users,
-  Warning, Bell, Star, Download, Eye, EyeSlash, TrendUp
+  Warning, Bell, Star, Download, Eye, EyeSlash, TrendUp, ChatCircle
 } from "@phosphor-icons/react";
 import { Chart } from "chart.js/auto";
 import ClassAttendance from './ClassAttendance';
 
 function TeacherDashboard({ user, onLogout }) {
+  const navigate = useNavigate()
   const [activePage, setActivePage] = useState('overview')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [courses, setCourses] = useState([])
@@ -382,6 +384,7 @@ function TeacherDashboard({ user, onLogout }) {
         </div>
 
         <nav style={S.nav}>
+          <SidebarBtn active={false} onClick={() => navigate('/chat')} icon={<ChatCircle size={20} />} label="Chat" count={null} />
           <SidebarBtn active={activePage === 'overview'} onClick={() => setActivePage('overview')} icon={<House size={20} />} label="Overview" count={null} />
           <SidebarBtn active={activePage === 'classes'} onClick={() => setActivePage('classes')} icon={<BookOpen size={20} />} label="My Classes" count={totalClasses} />
           <SidebarBtn active={activePage === 'class-attendance'} onClick={() => setActivePage('class-attendance')} icon={<ClipboardText size={20} />} label="Class Attendance" count={null} />

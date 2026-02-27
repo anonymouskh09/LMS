@@ -96,6 +96,18 @@ const isBDAgent = (req, res, next) => {
   next();
 };
 
+// Chat: HOD, Admin, Teacher, Student can use chat. Super Admin cannot.
+const isChatUser = (req, res, next) => {
+  const allowed = ['admin', 'principal', 'teacher', 'student', 'bd_agent'];
+  if (!allowed.includes(req.user.role)) {
+    return res.status(403).json({
+      success: false,
+      message: 'Chat is not available for this role.'
+    });
+  }
+  next();
+};
+
 module.exports = {
   verifyToken,
   isTeacher,
@@ -103,5 +115,6 @@ module.exports = {
   isPrincipal,
   isSuperAdmin,
   isStudent,
-  isBDAgent
+  isBDAgent,
+  isChatUser
 };

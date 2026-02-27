@@ -11,6 +11,7 @@ import Analytics from './pages/Analytics'
 import StudentAssignments from './pages/StudentAssignments'
 import PendingStudents from './pages/PendingStudents'
 import ApplyPage from './pages/ApplyPage'
+import Chat from './pages/Chat'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/teacher/signin" element={<TeacherSignIn />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/teacher/dashboard" element={<Dashboard />} />
+        <Route path="/chat" element={<Chat />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/assignments" element={<StudentAssignments />} />

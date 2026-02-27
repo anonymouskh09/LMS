@@ -1,11 +1,29 @@
+const http = require('http');
 const express = require('express');
 const cors = require('cors');
+const { Server } = require('socket.io');
 require('dotenv').config();
 
 const { testConnection } = require('./config/database');
 
 const app = express();
+const server = http.createServer(app);
 const PORT = process.env.PORT || 5000;
+
+// Socket.io for real-time chat (CORS for frontend)
+const io = new Server(server, {
+  cors: { origin: process.env.FRONTEND_URL || 'http://localhost:5173' }
+});
+app.set('io', io);
+
+io.on('connection', (socket) => {
+  socket.on('chat:join', (userId) => {
+    if (userId) {
+      socket.join(`user_${userId}`);
+    }
+  });
+  socket.on('disconnect', () => {});
+});
 
 // Middleware
 app.use(cors());
@@ -104,6 +122,10 @@ try {
   app.use('/api/pending-students', require('./api/pending-students'));
   console.log('✓ Pending students routes loaded');
   
+  console.log('Loading chat routes...');
+  app.use('/api/chat', require('./api/chat'));
+  console.log('✓ Chat routes loaded');
+  
   console.log('\n✅ All routes loaded successfully!\n');
   
 } catch (error) {
@@ -153,16 +175,16 @@ const startServer = async () => {
     console.error('❌ Failed to write to server_startup.log:', err);
   }
 
-  app.listen(PORT, () => {
+  server.listen(PORT, () => {
     console.log(`\n🚀 Server running on http://localhost:${PORT}`);
     console.log(`📚 University LMS Backend API`);
+    console.log(`💬 Chat Socket.io enabled`);
     console.log(`\nAvailable endpoints:`);
     console.log(`   POST http://localhost:${PORT}/api/signup`);
     console.log(`   POST http://localhost:${PORT}/api/signin`);
-    console.log(`   POST http://localhost:${PORT}/api/teacher/signup`);
-    console.log(`   POST http://localhost:${PORT}/api/teacher/signin`);
-    console.log(`   GET  http://localhost:${PORT}/api/courses`);
-    console.log(`   POST http://localhost:${PORT}/api/courses (create course)\n`);
+    console.log(`   GET  http://localhost:${PORT}/api/chat/users`);
+    console.log(`   GET  http://localhost:${PORT}/api/chat/messages/:userId`);
+    console.log(`   POST http://localhost:${PORT}/api/chat/messages\n`);
   });
 };
 

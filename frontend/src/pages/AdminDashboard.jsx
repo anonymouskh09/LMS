@@ -1,13 +1,15 @@
   import { useState, useEffect, useRef } from "react";
+  import { useNavigate } from "react-router-dom";
   import '../responsive.css'
   import { Chart } from "chart.js/auto";
   import {
     House, ChalkboardTeacher, UserCircle, Buildings, ClipboardText,
     CalendarBlank, CaretDown, Plus, SignOut, Trash, Phone, VideoCamera, 
-    DotsThreeVertical, PencilSimple, BookOpen, TrendUp, Pulse, UserPlus, GraduationCap, DotsThreeOutline
+    DotsThreeVertical, PencilSimple, BookOpen, TrendUp, Pulse, UserPlus, GraduationCap, DotsThreeOutline, ChatCircle
   } from "@phosphor-icons/react";
 
   function AdminDashboard({ user = { name: "Margaret" }, onLogout }) {
+    const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState("overview");
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [teachers, setTeachers] = useState([]);
@@ -282,6 +284,7 @@
           </div>
 
           <nav style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <SidebarBtn active={false} onClick={() => navigate('/chat')} icon={<ChatCircle size={20} />} label="Chat" />
             <SidebarBtn active={activeTab === 'overview'} onClick={() => setActiveTab('overview')} icon={<House size={20} />} label="Overview" />
             <SidebarBtn active={activeTab === 'teachers'} onClick={() => setActiveTab('teachers')} icon={<ChalkboardTeacher size={20} />} label="Teachers" />
             <SidebarBtn active={activeTab === 'students'} onClick={() => setActiveTab('students')} icon={<UserCircle size={20} />} label="Students" />

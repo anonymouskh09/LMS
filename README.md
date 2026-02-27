@@ -74,6 +74,8 @@ A comprehensive, modern Learning Management System designed for universities wit
    - Click "Import" tab
    - Select `backend/COMPLETE_DATABASE.sql`
    - Click "Go"
+5. **Chat feature:** Run the chat table script in phpMyAdmin (Import or SQL tab):
+   - Use `backend/CHAT_SCHEMA.sql` to create the `chat_messages` table
 
 ### 2. Backend Setup
 ```bash
@@ -112,6 +114,12 @@ npm run dev
 
 ### Student Account (Sample)
 - Sign up and wait for admin approval
+
+## 💬 Chat
+
+- **Page:** `/chat` — HOD, Admin, Teacher, and Student can chat with each other (real-time). Super Admin does not have chat access.
+- **Storage:** Messages are stored in `chat_messages` table.
+- **Real-time:** Socket.io is used for instant delivery; open the Chat page and send messages to see them appear on the other user’s screen without refresh.
 
 ## 📁 Project Structure
 
