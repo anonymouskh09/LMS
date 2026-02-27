@@ -29,8 +29,8 @@ function TeacherSignIn() {
 
       if (data.success) {
         // Save user data and token
-        localStorage.setItem('user', JSON.stringify(data.user))
-        localStorage.setItem('token', data.token)
+        sessionStorage.setItem('user', JSON.stringify(data.user))
+        sessionStorage.setItem('token', data.token)
         
         // Redirect to teacher dashboard
         navigate('/teacher/dashboard')

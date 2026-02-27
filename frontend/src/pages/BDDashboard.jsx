@@ -30,13 +30,15 @@ function BDDashboard({ user = { name: "BD Manager" }, onLogout }) {
   const [globalTeachers, setGlobalTeachers] = useState([]);
   const [globalStudents, setGlobalStudents] = useState([]);
   const [globalClasses, setGlobalClasses] = useState([]);
+  const [labUsage, setLabUsage] = useState([]);
+  const [loadingLabs, setLoadingLabs] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
   const [form, setForm] = useState({});
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
 
   useEffect(() => { fetchAll(); }, []);
@@ -55,6 +57,7 @@ function BDDashboard({ user = { name: "BD Manager" }, onLogout }) {
         fetch(`${API}/global/teachers`, { headers }).then(r => r.json()),
         fetch(`${API}/global/students`, { headers }).then(r => r.json()),
         fetch(`${API}/global/classes`, { headers }).then(r => r.json()),
+        fetch(`http://localhost:5000/api/labs/usage/all`, { headers }).then(r => r.json()),
       ]);
       if (ov.success) { setStats(ov.stats || {}); setPipeline(ov.pipeline || []); }
       if (l.success) setLeads(l.leads || []);
@@ -66,6 +69,10 @@ function BDDashboard({ user = { name: "BD Manager" }, onLogout }) {
       if (gt.success) setGlobalTeachers(gt.teachers || []);
       if (gs2.success) setGlobalStudents(gs2.students || []);
       if (gcl.success) setGlobalClasses(gcl.classes || []);
+      if (ov.success) setLabUsage(Array.isArray(ov) ? ov : (ov.usage || [])); // Fallback logic
+      // Fix for multi-fetch assignment
+      const labsData = await fetch(`http://localhost:5000/api/labs/usage/all`, { headers }).then(r => r.json());
+      if (labsData.success) setLabUsage(labsData.usage || []);
     } catch (e) { console.error(e); }
     setIsLoading(false);
   };
@@ -176,6 +183,7 @@ function BDDashboard({ user = { name: "BD Manager" }, onLogout }) {
             ['all_teachers', 'All Teachers', <ChalkboardTeacher size={20} />, globalStats.totalTeachers],
             ['all_students', 'All Students', <Users size={20} weight="duotone" />, globalStats.totalStudents],
             ['all_classes', 'All Classes', <BookOpen size={20} />, globalStats.totalClasses],
+            ['lab_usage', 'Lab Analytics', <Pulse size={20} weight="duotone" />, null],
           ].map(([tab, label, icon, count]) => (
             <SidebarBtn
               key={tab}
@@ -205,7 +213,8 @@ function BDDashboard({ user = { name: "BD Manager" }, onLogout }) {
                activeTab === 'bulkhires' ? 'Bulk Hire' :
                activeTab === 'all_campuses' ? 'Global Departments' :
                activeTab === 'all_teachers' ? 'Global Teachers' :
-               activeTab === 'all_students' ? 'Global Students' : 'Global Classes'}
+               activeTab === 'all_students' ? 'Global Students' : 
+               activeTab === 'lab_usage' ? 'Cloud Lab Analytics' : 'Global Classes'}
             </h1>
             <p style={S.subtitle}>Welcome back, <span style={S.userName}>{user.name}</span></p>
           </div>
@@ -664,6 +673,45 @@ function BDDashboard({ user = { name: "BD Manager" }, onLogout }) {
                       <td style={S.td}>{cl.teacher_name || '—'}</td>
                       <td style={S.td}>{cl.campus_name || '—'}</td>
                       <td style={S.td}>{cl.academic_year}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+        {activeTab === 'lab_usage' && (
+          <div style={S.tableCard}>
+            <div style={S.tableContainer} className="table-container">
+              <table style={S.table}>
+                <thead>
+                  <tr style={S.tableHeadRow}>
+                    <th style={S.th}>STUDENT</th>
+                    <th style={S.th}>LAB NAME</th>
+                    <th style={S.th}>DATE</th>
+                    <th style={S.th}>DURATION</th>
+                    <th style={S.th}>STATUS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {labUsage.map((usage, idx) => (
+                    <tr key={idx} style={S.tableRow}>
+                      <td style={S.tdName}>
+                        {usage.student_name} <br/>
+                        <span style={S.tdSub}>{usage.roll_number}</span>
+                      </td>
+                      <td style={S.td}>{usage.lab_name}</td>
+                      <td style={S.td}>{new Date(usage.date).toLocaleDateString()}</td>
+                      <td style={S.td}>{usage.time_spent} mins</td>
+                      <td style={S.td}>
+                        <span style={{
+                          ...S.statusBadge,
+                          background: usage.end_time ? '#dcfce7' : '#fef3c7',
+                          color: usage.end_time ? '#166534' : '#92400e'
+                        }}>
+                          {usage.end_time ? 'Completed' : 'In Progress'}
+                        </span>
+                      </td>
                     </tr>
                   ))}
                 </tbody>

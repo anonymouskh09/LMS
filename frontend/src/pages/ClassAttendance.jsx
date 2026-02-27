@@ -18,7 +18,7 @@ function ClassAttendance({ user, onBack }) {
   // Class Course Management
   const [classCourses, setClassCourses] = useState([]);
 
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
 
   useEffect(() => {
     fetch('http://localhost:5000/api/classes/teacher/my-classes', {

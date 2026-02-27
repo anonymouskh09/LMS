@@ -11,27 +11,46 @@ import './Dashboard.css'
 function Dashboard() {
   const navigate = useNavigate()
   const [user, setUser] = useState(null)
+  const [verifying, setVerifying] = useState(true)
 
   useEffect(() => {
-    const userData = localStorage.getItem('user')
-    if (!userData) {
+    const userData = sessionStorage.getItem('user')
+    const token = sessionStorage.getItem('token')
+
+    if (!userData || !token) {
       navigate('/signin')
       return
     }
-    try {
-      setUser(JSON.parse(userData))
-    } catch (e) {
-      console.error("Failed to parse user data", e)
-      navigate('/signin')
+
+    // Verify token with backend for real privacy
+    const verifyToken = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/verify-token', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        })
+        const data = await response.json()
+        if (!data.success) {
+          throw new Error('Invalid token')
+        }
+        setUser(JSON.parse(userData))
+      } catch (e) {
+        console.error("Session verification failed", e)
+        sessionStorage.clear()
+        navigate('/signin')
+      } finally {
+        setVerifying(false)
+      }
     }
+
+    verifyToken()
   }, [navigate])
 
   const handleLogout = () => {
-    localStorage.removeItem('user')
-    localStorage.removeItem('token')
+    sessionStorage.clear() // Remove everything
     navigate('/signin')
   }
 
+  if (verifying) return <div className="loading-screen">Verifying Session...</div>
   if (!user) return null
 
   // Super Admin — global platform control

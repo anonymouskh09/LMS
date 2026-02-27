@@ -12,8 +12,8 @@ function Courses() {
   const [assignments, setAssignments] = useState([])
 
   useEffect(() => {
-    const userData = localStorage.getItem('user')
-    const token = localStorage.getItem('token')
+    const userData = sessionStorage.getItem('user')
+    const token = sessionStorage.getItem('token')
     
     if (!userData || !token) {
       navigate('/signin')
@@ -26,7 +26,7 @@ function Courses() {
   }, [navigate])
 
   const fetchEnrolledCourses = async () => {
-    const token = localStorage.getItem('token')
+    const token = sessionStorage.getItem('token')
     try {
       const response = await fetch('http://localhost:5000/api/courses/my-enrollments', {
         headers: { 'Authorization': `Bearer ${token}` }
@@ -53,7 +53,7 @@ function Courses() {
   }
 
   const fetchCourseAssignments = async (courseId) => {
-    const token = localStorage.getItem('token')
+    const token = sessionStorage.getItem('token')
     try {
       const response = await fetch(`http://localhost:5000/api/submissions/course/${courseId}`, {
         headers: { 'Authorization': `Bearer ${token}` }
@@ -68,7 +68,7 @@ function Courses() {
   }
 
   const handleEnroll = async (courseId) => {
-    const token = localStorage.getItem('token')
+    const token = sessionStorage.getItem('token')
     try {
       const response = await fetch(`http://localhost:5000/api/courses/${courseId}/enroll`, {
         method: 'POST',

@@ -19,7 +19,7 @@ function SuperAdminDashboard({ user = { name: "Main Department" }, onLogout }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
 
   useEffect(() => { fetchData(); }, []);
 

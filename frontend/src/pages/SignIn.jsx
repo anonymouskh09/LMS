@@ -36,8 +36,8 @@ function SignIn() {
       const data = await response.json()
 
       if (data.success) {
-        localStorage.setItem('user', JSON.stringify(data.user))
-        localStorage.setItem('token', data.token)
+        sessionStorage.setItem('user', JSON.stringify(data.user))
+        sessionStorage.setItem('token', data.token)
         
         if (data.user.role === 'teacher') {
           navigate('/teacher/dashboard')

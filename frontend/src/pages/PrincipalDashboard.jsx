@@ -6,7 +6,8 @@ import {
   UserPlus, SignOut, Plus, Trash, PencilSimple, TrendUp, 
   Pulse, GraduationCap, CalendarBlank, Users, ChartLine,
   CheckCircle, XCircle, DotsThreeOutline, Clock, Star,
-  Warning, Bell, Gear, Download, Eye, EyeSlash
+  Warning, Bell, Gear, Eye, EyeSlash, SquaresFour,
+  Check, ArrowsCounterClockwise
 } from "@phosphor-icons/react";
 
 const API = "http://localhost:5000/api";
@@ -19,12 +20,14 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
   const [courses, setCourses] = useState([]);
   const [logs, setLogs] = useState([]);
   const [pendingStudents, setPendingStudents] = useState([]);
+  const [labs, setLabs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [showAddModal, setShowAddModal] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [newPerson, setNewPerson] = useState({ name: "", email: "", password: "", semester: "1" });
   const [newClass, setNewClass] = useState({ name: "", section: "", academic_year: "2024-2025", teacher_id: "" });
   const [newCourse, setNewCourse] = useState({ title: "", description: "", teacher_id: "", class_id: "" });
+  const [newLab, setNewLab] = useState({ name: "", description: "", icon: "🔬", url: "" });
   const [editingItem, setEditingItem] = useState(null);
   const [timetables, setTimetables] = useState([]);
   const [showTimetableModal, setShowTimetableModal] = useState(false);
@@ -42,10 +45,14 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
   const [refreshInterval, setRefreshInterval] = useState(30000); // 30 seconds
   const [lastUpdated, setLastUpdated] = useState(new Date());
   const [showStats, setShowStats] = useState(true);
+  const [labUsage, setLabUsage] = useState([]);
+  const [loadingLabs, setLoadingLabs] = useState(false);
+  const [courseFeedbackAnalytics, setCourseFeedbackAnalytics] = useState([]);
+  const [labFeedbackAnalytics, setLabFeedbackAnalytics] = useState([]);
   
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
 
   // Real-time data fetch with interval
   useEffect(() => {
@@ -61,22 +68,30 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
   const fetchData = async () => {
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const [t, s, cl, co, l, p, tt] = await Promise.all([
+      const [t, s, cl, co, ps, tt, lu, labsRes, logsRes, res7, res8] = await Promise.all([
         fetch(`${API}/principal/teachers`, { headers }).then(r => r.json()),
         fetch(`${API}/principal/students`, { headers }).then(r => r.json()),
         fetch(`${API}/classes`, { headers }).then(r => r.json()),
         fetch(`${API}/courses?status=all`, { headers }).then(r => r.json()),
-        fetch(`${API}/logs?limit=10`, { headers }).then(r => r.json()),
         fetch(`${API}/pending-students`, { headers }).then(r => r.json()),
         fetch(`${API}/timetables`, { headers }).then(r => r.json()),
+        fetch(`http://localhost:5000/api/labs/usage/all`, { headers }).then(r => r.json()),
+        fetch(`${API}/labs`, { headers }).then(r => r.json()),
+        fetch(`${API}/logs`, { headers }).then(r => r.json()),
+        fetch(`${API}/feedback/analytics/courses`, { headers }).then(r => r.json()),
+        fetch(`${API}/feedback/analytics/labs`, { headers }).then(r => r.json()),
       ]);
       if (t.success) setTeachers(t.teachers || []);
       if (s.success) setStudents(s.students || []);
       if (cl.success) setClasses(cl.classes || []);
       if (co.success) setCourses(co.courses || []);
-      if (l.success) setLogs(l.logs || []);
-      if (p.success) setPendingStudents(p.students || []);
+      if (ps.success) setPendingStudents(ps.students || []);
       if (tt.success) setTimetables(tt.timetables || []);
+      if (lu.success) setLabUsage(lu.usage || []);
+      if (labsRes.success) setLabs(labsRes.labs || []);
+      if (logsRes.success) setLogs(logsRes.logs || []);
+      if (res7 && res7.success) setCourseFeedbackAnalytics(res7.analytics || []);
+      if (res8 && res8.success) setLabFeedbackAnalytics(res8.analytics || []);
       setIsLoading(false);
     } catch (e) { 
       console.error(e);
@@ -146,12 +161,14 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
   const singularTab = (tab) => {
     if (tab === 'classes') return 'class';
     if (tab === 'pending') return 'student';
+    if (tab === 'labs') return 'lab';
+    if (tab === 'history') return 'course';
     return tab.slice(0, -1);
   };
 
   const handleDelete = async (id, type) => {
     if (!window.confirm(`Delete this ${type}?`)) return;
-    const endpointMap = { teacher: 'principal/teachers', student: 'principal/students', class: 'classes', course: 'courses' };
+    const endpointMap = { teacher: 'principal/teachers', student: 'principal/students', class: 'classes', course: 'courses', lab: 'labs' };
     const res = await fetch(`${API}/${endpointMap[type]}/${id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } });
     const data = await res.json();
     if (data.success) fetchData(); else alert('❌ ' + data.message);
@@ -179,8 +196,8 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
 
   const handleAddSubmit = async (e) => {
     e.preventDefault();
-    const endpointMap = { teachers: 'principal/teachers', students: 'principal/students', classes: 'classes', courses: 'courses' };
-    const bodyMap = { teachers: newPerson, students: newPerson, classes: newClass, courses: newCourse };
+    const endpointMap = { teachers: 'principal/teachers', students: 'principal/students', classes: 'classes', courses: 'courses', labs: 'labs' };
+    const bodyMap = { teachers: newPerson, students: newPerson, classes: newClass, courses: newCourse, labs: newLab };
     
     let url = `${API}/${endpointMap[activeTab]}`;
     let method = 'POST';
@@ -207,6 +224,7 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
     setNewPerson({ name: "", email: "", password: "", semester: "1" });
     setNewClass({ name: "", section: "", academic_year: "2024-2025", teacher_id: "" });
     setNewCourse({ title: "", description: "", teacher_id: "", class_id: "" });
+    setNewLab({ name: "", description: "", icon: "🔬", url: "" });
     setNewTimetableEntry({
       course_id: '',
       class_id: '',
@@ -251,7 +269,33 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
     } catch (e) { console.error(e); }
   };
 
-  const getTableData = () => ({ teachers, students, classes, courses, pending: pendingStudents }[activeTab] || []);
+  const handleUpdateCourseStatus = async (id, status) => {
+    if (!window.confirm(`Mark this course as ${status}?`)) return;
+    try {
+      const res = await fetch(`${API}/courses/${id}/status`, {
+        method: 'PATCH',
+        headers: { 
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json' 
+        },
+        body: JSON.stringify({ status })
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert(`✅ Course ${status === 'completed' ? 'moved to history' : 're-activated'}!`);
+        fetchData();
+      } else alert('❌ ' + data.message);
+    } catch (e) {
+      console.error(e);
+      alert('❌ Error updating course status');
+    }
+  };
+
+  const getTableData = () => {
+    if (activeTab === 'courses') return courses.filter(c => c.status === 'active');
+    if (activeTab === 'history') return courses.filter(c => c.status === 'completed');
+    return { teachers, students, classes, pending: pendingStudents, labs }[activeTab] || [];
+  };
 
   // Calculate stats
   const totalActiveCourses = courses.filter(c => c.status === 'active').length;
@@ -267,7 +311,16 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
   );
 
   return (
-    <div style={S.container}>
+    <div style={S.container} className="dashboard-wrapper">
+      <style>{`
+        .hidden-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hidden-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
       {/* Animated Background Orbs */}
       <div style={S.bgOrb1}></div>
       <div style={S.bgOrb2}></div>
@@ -283,7 +336,7 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
       </button>
 
       {/* Sidebar */}
-      <aside style={S.sidebar} className={`sidebar ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+      <aside style={S.sidebar} className={`sidebar hidden-scrollbar ${mobileMenuOpen ? 'mobile-open' : ''}`}>
         <div style={S.logoWrapper}>
           <div style={S.logoIcon}><GraduationCap size={24} weight="fill" /></div>
           <span style={S.logoText}>Department<span style={S.logoAccent}>Hub</span></span>
@@ -301,8 +354,12 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
             ['teachers', 'Teachers', <ChalkboardTeacher size={20} />, teachers.length],
             ['students', 'Students', <UserCircle size={20} />, students.length],
             ['classes', 'Classes', <Buildings size={20} />, classes.length],
-            ['courses', 'Courses', <BookOpen size={20} />, courses.length],
+            ['courses', 'Courses', <BookOpen size={20} />, courses.filter(c => c.status === 'active').length],
+            ['history', 'Course History', <Clock size={20} />, courses.filter(c => c.status === 'completed').length],
             ['timetable', 'Time Table', <Clock size={20} />, timetables.length],
+            ['labs', 'Lab Management', <SquaresFour size={20} />, labs.length],
+            ['lab_usage', 'Lab Analytics', <Pulse size={20} weight="duotone" />, null],
+            ['feedback', 'Quality Reports', <ChartLine size={20} />, null],
             ['pending', 'Pending', <UserPlus size={20} />, pendingStudents.length]
           ].map(([tab, label, icon, count]) => (
             <button 
@@ -486,7 +543,7 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
                 </p>
               </div>
               <div style={S.tableActions}>
-                {activeTab !== 'pending' && activeTab !== 'timetable' && (
+                {activeTab !== 'pending' && activeTab !== 'timetable' && activeTab !== 'history' && (
                   <button onClick={() => setShowAddModal(true)} style={S.addBtn} className="add-btn">
                     <Plus size={18} weight="bold" /> Add New
                   </button>
@@ -496,9 +553,6 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
                     <Plus size={18} weight="bold" /> Add Entry
                   </button>
                 )}
-                <button style={S.exportBtn} className="export-btn" title="Export Data">
-                  <Download size={18} />
-                </button>
               </div>
             </div>
             
@@ -542,6 +596,7 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
                       <th style={S.th}>NAME / TITLE</th>
                       {activeTab === 'students' && <th style={S.th}>ROLL NO</th>}
                       {activeTab === 'students' && <th style={S.th}>SEM</th>}
+                      {(activeTab === 'labs') && <th style={S.th}>URL</th>}
                       <th style={S.th}>EMAIL / DETAIL</th>
                       {(activeTab === 'classes' || activeTab === 'courses') && <th style={S.th}>TEACHER</th>}
                       {activeTab === 'courses' && <th style={S.th}>STATUS</th>}
@@ -554,6 +609,7 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
                         <td style={S.tdName}>{item.name || item.title}</td>
                         {activeTab === 'students' && <td style={S.td}>{item.roll_number || <span style={{color: '#94a3b8'}}>Pending</span>}</td>}
                         {activeTab === 'students' && <td style={S.td}>{item.semester || 1}</td>}
+                        {activeTab === 'labs' && <td style={S.td}>{item.url || '—'}</td>}
                         <td style={S.td}>{item.email || item.section || (item.description || '').substring(0, 40)}</td>
                         {(activeTab === 'classes' || activeTab === 'courses') && <td style={S.td}>{item.teacher_name || '—'}</td>}
                         {activeTab === 'courses' && (
@@ -587,6 +643,24 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
                             </div>
                           ) : (
                             <div style={S.actionGroup}>
+                              {activeTab === 'courses' && (
+                                <button 
+                                  style={{...S.iconBtn, color: '#22c55e'}} 
+                                  title="Complete Course"
+                                  onClick={() => handleUpdateCourseStatus(item.id, 'completed')}
+                                >
+                                  <Check size={16} weight="bold" />
+                                </button>
+                              )}
+                              {activeTab === 'history' && (
+                                <button 
+                                  style={{...S.iconBtn, color: '#7c3aed'}} 
+                                  title="Re-activate Course"
+                                  onClick={() => handleUpdateCourseStatus(item.id, 'active')}
+                                >
+                                  <ArrowsCounterClockwise size={16} weight="bold" />
+                                </button>
+                              )}
                               {activeTab === 'classes' && (
                                 <button 
                                   style={{...S.iconBtn, color: '#7c3aed'}} 
@@ -608,7 +682,7 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
                               </button>
                               <button 
                                 style={S.deleteBtn} 
-                                onClick={() => handleDelete(item.id, singularTab(activeTab))}
+                                onClick={() => handleDelete(item.id, activeTab === 'history' ? 'course' : singularTab(activeTab))}
                               >
                                 <Trash size={16} />
                               </button>
@@ -623,10 +697,250 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
             </div>
           </div>
         )}
+
+        {/* CLOUD LABS ANALYTICS */}
+        {activeTab === 'lab_usage' && (
+          <div style={S.tableCard} className="table-container animate-fadeIn">
+            <div style={S.tableHeader}>
+              <div>
+                <h2 style={S.tableTitle}>🔬 Cloud Lab Analytics</h2>
+                <p style={S.tableSubtitle}>Unified view of lab usage across departments</p>
+              </div>
+            </div>
+            
+            <table style={S.table}>
+              <thead>
+                <tr style={S.tableHeadRow}>
+                  <th style={S.th}>STUDENT</th>
+                  <th style={S.th}>LAB NAME</th>
+                  <th style={S.th}>DATE</th>
+                  <th style={S.th}>DURATION</th>
+                  <th style={S.th}>STATUS</th>
+                </tr>
+              </thead>
+              <tbody>
+                {labUsage.map((usage, idx) => (
+                  <tr key={idx} style={S.tableRow}>
+                    <td style={S.tdName}>
+                      {usage.student_name} <br/>
+                      <span style={{fontSize: '11px', color: '#64748b'}}>{usage.roll_number}</span>
+                    </td>
+                    <td style={S.td}>{usage.lab_name}</td>
+                    <td style={S.td}>{new Date(usage.date).toLocaleDateString()}</td>
+                    <td style={S.td}>{usage.time_spent} mins</td>
+                    <td style={S.td}>
+                      <span style={{
+                        ...S.statusBadge,
+                        background: usage.end_time ? '#dcfce7' : '#fef3c7',
+                        color: usage.end_time ? '#166534' : '#92400e'
+                      }}>
+                        {usage.end_time ? 'Completed' : 'In Progress'}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+                {labUsage.length === 0 && (
+                  <tr>
+                    <td colSpan="5" style={S.emptyTableCell}>No lab usage history found.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        {/* FEEDBACK ANALYTICS */}
+        {activeTab === 'feedback' && (
+          <div className="animate-fadeIn">
+            <div style={{...S.tableCard, marginBottom: '24px'}}>
+              <div style={S.tableHeader}>
+                <div>
+                  <h2 style={S.tableTitle}>📈 Course Quality Metrics</h2>
+                  <p style={S.tableSubtitle}>Monitoring training standards through student feedback</p>
+                </div>
+              </div>
+              
+              <div style={{padding: '24px'}}>
+                {courseFeedbackAnalytics.length > 0 ? (
+                  <div style={{height: '350px'}}>
+                    <canvas ref={el => {
+                      if (el) {
+                        const ctx = el.getContext('2d');
+                        if (el.chart) el.chart.destroy();
+                        el.chart = new Chart(ctx, {
+                          type: 'bar',
+                          data: {
+                            labels: courseFeedbackAnalytics.map(a => a.title),
+                            datasets: [{
+                              label: 'Average Rating',
+                              data: courseFeedbackAnalytics.map(a => parseFloat(a.avg_rating).toFixed(1)),
+                              backgroundColor: '#7c3aed',
+                              borderRadius: 8,
+                              barThickness: 40
+                            }]
+                          },
+                          options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                              y: { beginAtZero: true, max: 5 }
+                            },
+                            plugins: {
+                              legend: { display: false }
+                            }
+                          }
+                        });
+                      }
+                    }}></canvas>
+                  </div>
+                ) : (
+                  <div style={S.emptyState}>No feedback data available for courses yet.</div>
+                )}
+              </div>
+            </div>
+
+            <div style={S.tableCard}>
+              <div style={S.tableHeader}>
+                <div>
+                  <h2 style={S.tableTitle}>Feedback Details</h2>
+                  <p style={S.tableSubtitle}>Breakdown by course and rating count</p>
+                </div>
+              </div>
+              <table style={S.table}>
+                <thead>
+                  <tr style={S.tableHeadRow}>
+                    <th style={S.th}>COURSE</th>
+                    <th style={S.th}>AVERAGE RATING</th>
+                    <th style={S.th}>TOTAL FEEDBACKS</th>
+                    <th style={S.th}>QUALITY STATUS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {courseFeedbackAnalytics.map((item, idx) => (
+                    <tr key={idx} style={S.tableRow}>
+                      <td style={S.tdName}>{item.title}</td>
+                      <td style={S.td}>
+                        <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+                          <Star size={16} color="#f59e0b" weight="fill" />
+                          {parseFloat(item.avg_rating).toFixed(1)} / 5.0
+                        </div>
+                      </td>
+                      <td style={S.td}>{item.feedback_count} reviews</td>
+                      <td style={S.td}>
+                        <span style={{
+                          ...S.statusBadge,
+                          background: parseFloat(item.avg_rating) >= 4 ? '#dcfce7' : parseFloat(item.avg_rating) >= 3 ? '#fef3c7' : '#fee2e2',
+                          color: parseFloat(item.avg_rating) >= 4 ? '#166534' : parseFloat(item.avg_rating) >= 3 ? '#92400e' : '#991b1b'
+                        }}>
+                          {parseFloat(item.avg_rating) >= 4 ? 'Excellent' : parseFloat(item.avg_rating) >= 3 ? 'Good' : 'Needs Review'}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* LAB FEEDBACK ANALYTICS */}
+            <div style={{...S.tableCard, marginTop: '24px', marginBottom: '24px'}}>
+              <div style={S.tableHeader}>
+                <div>
+                  <h2 style={S.tableTitle}>🔬 Lab Quality Metrics</h2>
+                  <p style={S.tableSubtitle}>Student feedback on cloud labs performance and utility</p>
+                </div>
+              </div>
+              
+              <div style={{padding: '24px'}}>
+                {labFeedbackAnalytics.length > 0 ? (
+                  <div style={{height: '350px'}}>
+                    <canvas ref={el => {
+                      if (el) {
+                        const ctx = el.getContext('2d');
+                        if (el.chart) el.chart.destroy();
+                        el.chart = new Chart(ctx, {
+                          type: 'bar',
+                          data: {
+                            labels: labFeedbackAnalytics.map(a => a.title),
+                            datasets: [{
+                              label: 'Average Lab Rating',
+                              data: labFeedbackAnalytics.map(a => parseFloat(a.avg_rating).toFixed(1)),
+                              backgroundColor: '#8b5cf6',
+                              borderRadius: 8,
+                              barThickness: 40
+                            }]
+                          },
+                          options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                              y: { beginAtZero: true, max: 5 }
+                            },
+                            plugins: {
+                              legend: { display: false }
+                            }
+                          }
+                        });
+                      }
+                    }}></canvas>
+                  </div>
+                ) : (
+                  <div style={S.emptyState}>No feedback data available for labs yet.</div>
+                )}
+              </div>
+            </div>
+
+            <div style={S.tableCard}>
+              <div style={S.tableHeader}>
+                <div>
+                  <h2 style={S.tableTitle}>Lab Feedback Details</h2>
+                  <p style={S.tableSubtitle}>Ratings summary per cloud lab</p>
+                </div>
+              </div>
+              <table style={S.table}>
+                <thead>
+                  <tr style={S.tableHeadRow}>
+                    <th style={S.th}>LAB NAME</th>
+                    <th style={S.th}>AVERAGE RATING</th>
+                    <th style={S.th}>TOTAL FEEDBACKS</th>
+                    <th style={S.th}>QUALITY STATUS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {labFeedbackAnalytics.map((item, idx) => (
+                    <tr key={idx} style={S.tableRow}>
+                      <td style={S.tdName}>{item.title}</td>
+                      <td style={S.td}>
+                        <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+                          <Star size={16} color="#f59e0b" weight="fill" />
+                          {parseFloat(item.avg_rating).toFixed(1)} / 5.0
+                        </div>
+                      </td>
+                      <td style={S.td}>{item.feedback_count} reviews</td>
+                      <td style={S.td}>
+                        <span style={{
+                          ...S.statusBadge,
+                          background: parseFloat(item.avg_rating) >= 4 ? '#dcfce7' : parseFloat(item.avg_rating) >= 3 ? '#fef3c7' : '#fee2e2',
+                          color: parseFloat(item.avg_rating) >= 4 ? '#166534' : parseFloat(item.avg_rating) >= 3 ? '#92400e' : '#991b1b'
+                        }}>
+                          {parseFloat(item.avg_rating) >= 4 ? 'Excellent' : parseFloat(item.avg_rating) >= 3 ? 'Good' : 'Needs Review'}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                  {labFeedbackAnalytics.length === 0 && (
+                    <tr>
+                      <td colSpan="4" style={{...S.td, textAlign: 'center', padding: '24px', color: '#94a3b8'}}>No lab feedback data matches the selected criteria.</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
       </main>
 
       {/* Right Panel - Enhanced */}
-      <aside style={S.rightPanel} className="right-panel">
+      <aside style={S.rightPanel} className="right-panel hidden-scrollbar">
         <div style={S.profileCard}>
           <div style={{...S.avatar, background: 'linear-gradient(135deg, #7c3aed, #a78bfa)'}}>
             {user.name.charAt(0)}
@@ -774,6 +1088,50 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
                       <option value="">No Teacher</option>
                       {teachers.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
                     </select>
+                  </div>
+                </>
+              ) : activeTab === 'labs' ? (
+                <>
+                  <div style={S.inputGroup}>
+                    <label style={S.inputLabel}>Lab Name</label>
+                    <input 
+                      placeholder="e.g. Linux Fundamentals" 
+                      required 
+                      value={editingItem ? editingItem.name : newLab.name} 
+                      onChange={e => editingItem ? setEditingItem({...editingItem, name: e.target.value}) : setNewLab({...newLab, name: e.target.value})} 
+                      style={S.input}
+                    />
+                  </div>
+                  <div style={S.inputGroup}>
+                    <label style={S.inputLabel}>Lab URL</label>
+                    <input 
+                      placeholder="https://antigravity.cloud/labs/..." 
+                      required 
+                      value={editingItem ? editingItem.url : newLab.url} 
+                      onChange={e => editingItem ? setEditingItem({...editingItem, url: e.target.value}) : setNewLab({...newLab, url: e.target.value})} 
+                      style={S.input}
+                    />
+                  </div>
+                  <div style={S.inputGroup}>
+                    <label style={S.inputLabel}>Select Icon</label>
+                    <select 
+                      value={editingItem ? editingItem.icon : newLab.icon} 
+                      onChange={e => editingItem ? setEditingItem({...editingItem, icon: e.target.value}) : setNewLab({...newLab, icon: e.target.value})} 
+                      style={S.input}
+                    >
+                      {['🔬', '🐧', '⚛️', '🗄️', '🛡️', '💻', '🐍', '🚀'].map(icon => (
+                        <option key={icon} value={icon}>{icon}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div style={S.inputGroup}>
+                    <label style={S.inputLabel}>Description</label>
+                    <textarea 
+                      placeholder="What students will learn..." 
+                      value={editingItem ? editingItem.description : newLab.description} 
+                      onChange={e => editingItem ? setEditingItem({...editingItem, description: e.target.value}) : setNewLab({...newLab, description: e.target.value})} 
+                      style={{...S.input, height: '80px', resize: 'vertical'}}
+                    />
                   </div>
                 </>
               ) : activeTab === 'courses' ? (

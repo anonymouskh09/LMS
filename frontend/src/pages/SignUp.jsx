@@ -82,8 +82,8 @@ function SignUp() {
           alert("✅ Registration submitted successfully!\n\nYour account is pending teacher approval.");
           setTimeout(() => navigate("/signin"), 2000);
         } else {
-          localStorage.setItem("user", JSON.stringify(data.user));
-          localStorage.setItem("token", data.token);
+          sessionStorage.setItem("user", JSON.stringify(data.user));
+          sessionStorage.setItem("token", data.token);
           navigate("/dashboard");
         }
       } else {

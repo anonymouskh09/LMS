@@ -27,7 +27,7 @@
     const [showEditModal, setShowEditModal] = useState(false);
     const [showEditCourseModal, setShowEditCourseModal] = useState(false);
 
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     const chartRef = useRef(null);
     const chartInstance = useRef(null);
 

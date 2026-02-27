@@ -1,0 +1,481 @@
+2026-02-26T22:53:20.186Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:20.201Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:20.215Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:20.231Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+2026-02-26T22:53:20.252Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:20.273Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:20.296Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:20.314Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+2026-02-26T22:53:20.338Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:20.387Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:24.542Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:24.574Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:24.609Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+2026-02-26T22:53:24.643Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:24.668Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:25.857Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:25.893Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:25.962Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+2026-02-26T22:53:25.990Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:26.011Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:26.026Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:26.040Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:27.464Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:27.499Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+2026-02-26T22:53:27.540Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:27.591Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:27.627Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:30.825Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:30.893Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+2026-02-26T22:53:30.941Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:30.977Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:30.997Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:31.029Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:31.052Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:31.071Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)
+2026-02-26T22:53:31.088Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+2026-02-26T22:53:31.105Z - Token Error: jwt expired
+Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJzaGFoZXJ5YXJAZ21haWwuY29tIiwicm9sZSI6InRlYWNoZXIiLCJjYW1wdXNfaWQiOjEsImlhdCI6MTc3MTUwMTI5MiwiZXhwIjoxNzcyMTA2MDkyfQ.aYSfS1RXsxed1KuhtwKH3proc85xXNJFoXSvbTg9j_w
+Stack: TokenExpiredError: jwt expired
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyToken (C:\Users\I.s computer\Desktop\LMS\backend\middleware\auth.js:15:25)
+    at Layer.handle [as handle_request] (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\I.s computer\Desktop\LMS\backend\node_modules\express\lib\router\index.js:175:3)

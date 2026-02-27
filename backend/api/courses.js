@@ -121,20 +121,16 @@ router.patch('/:id/status', verifyToken, async (req, res) => {
         const [course] = await pool.query('SELECT teacher_id FROM courses WHERE id = ?', [id]);
         if (course.length === 0) return res.status(404).json({ success: false, message: 'Course not found' });
 
-        if (user.role !== 'admin' && course[0].teacher_id !== user.id) {
+        const isPowerUser = ['admin', 'principal', 'super_admin'].includes(user.role);
+        console.log(`Permission check: user=${user.email}, role=${user.role}, isPowerUser=${isPowerUser}`);
+
+        if (!isPowerUser && course[0].teacher_id !== user.id) {
+            console.log(`Access Denied: user.id=${user.id}, teacher_id=${course[0].teacher_id}`);
             return res.status(403).json({ success: false, message: 'Access denied' });
         }
         
-        // Only Admin can reactivate from 'archived' if we enforcestrict flow, 
-        // but 'completed' can be toggled by teacher potentially? 
-        // User request: "Admin Override: Only the Admin can view the "History" ... and toggle status back"
-        // So teachers set to 'completed', and it disappears for them (into history).
-        // Let's allow admins to set any status. Teachers can set 'completed'.
-
-        if (status === 'active' && user.role !== 'admin') {
-             // User Req: "Only the Admin... has a specific button to toggle the status back... (Restart Course)"
-             // This implies teachers CANNOT Reactivate.
-             return res.status(403).json({ success: false, message: 'Only Admins can reactivate courses.' });
+        if (status === 'active' && !isPowerUser) {
+             return res.status(403).json({ success: false, message: 'Only Admins/HODs can reactivate courses.' });
         }
 
         await pool.query('UPDATE courses SET status = ? WHERE id = ?', [status, id]);
