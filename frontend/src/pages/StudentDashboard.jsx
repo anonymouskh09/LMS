@@ -1,16 +1,18 @@
 import { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../responsive.css'
 import {
   House, BookOpen, Clock, CheckCircle, GraduationCap,
   ChartLineUp, SignOut, CalendarBlank,
   ArrowLeft, User, Phone, VideoCamera, DotsThreeVertical, Buildings, 
   CaretRight, IdentificationCard, DotsThreeOutline, PlusCircle, ClipboardText, FileText, Upload, X,
-  ChartLine, Users, Star, Warning, Bell, TrendUp, Pulse
+  ChartLine, Users, Star, Warning, Bell, TrendUp, Pulse, ChatCircle
 } from "@phosphor-icons/react";
 import { Chart } from "chart.js/auto";
 import LabPlayer from './LabPlayer';
 
 function StudentDashboard({ user, onLogout }) {
+  const navigate = useNavigate()
   const [activePage, setActivePage] = useState('courses')
   const [registrationTab, setRegistrationTab] = useState('class')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -931,6 +933,7 @@ function StudentDashboard({ user, onLogout }) {
         </div>
 
         <nav style={S.nav}>
+          <SidebarBtn active={false} onClick={() => navigate('/chat')} icon={<ChatCircle size={20} />} label="Chat" count={null} />
           <p style={S.navLabel}>ACADEMICS</p>
           <SidebarBtn active={activePage === 'courses'} onClick={() => setActivePage('courses')} icon={<House size={20} />} label="Dashboard" count={null} />
           <SidebarBtn active={activePage === 'registration'} onClick={() => setActivePage('registration')} icon={<Buildings size={20} />} label="Registration" count={availableClasses.length} />

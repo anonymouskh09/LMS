@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "../responsive.css";
 import { Chart } from "chart.js/auto";
 import { 
@@ -8,11 +9,13 @@ import {
   CheckCircle, XCircle, DotsThreeOutline, Clock, Star,
   Warning, Bell, Gear, Eye, EyeSlash, SquaresFour,
   Check, ArrowsCounterClockwise
+  Warning, Bell, Gear, Download, Eye, EyeSlash, ChatCircle
 } from "@phosphor-icons/react";
 
 const API = "http://localhost:5000/api";
 
 function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("overview");
   const [teachers, setTeachers] = useState([]);
   const [students, setStudents] = useState([]);
@@ -349,6 +352,9 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
         </div>
 
         <nav style={S.nav}>
+          <button type="button" onClick={() => navigate('/chat')} style={S.navBtn} className="nav-btn">
+            <ChatCircle size={20} /><span style={{ flex: 1, textAlign: 'left' }}>Chat</span>
+          </button>
           {[
             ['overview', 'Overview', <House size={20} />, teachers.length + students.length],
             ['teachers', 'Teachers', <ChalkboardTeacher size={20} />, teachers.length],

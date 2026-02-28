@@ -13,6 +13,7 @@ import ApplyPage from './pages/ApplyPage'
 import LabPlayer from './pages/LabPlayer'
 import ProtectedRoute from './components/ProtectedRoute'
 import PublicRoute from './components/PublicRoute'
+import Chat from './pages/Chat'
 
 function App() {
   return (
@@ -37,6 +38,14 @@ function App() {
         <Route path="/labs/:labId" element={<ProtectedRoute><LabPlayer /></ProtectedRoute>} />
         
         {/* Miscellaneous */}
+        <Route path="/teacher/signin" element={<TeacherSignIn />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/teacher/dashboard" element={<Dashboard />} />
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/analytics" element={<Analytics />} />
+        <Route path="/assignments" element={<StudentAssignments />} />
+        <Route path="/pending-students" element={<PendingStudents />} />
         <Route path="/apply" element={<ApplyPage />} />
         <Route path="/apply/:jobId" element={<ApplyPage />} />
       </Routes>
