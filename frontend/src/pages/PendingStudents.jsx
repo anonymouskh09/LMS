@@ -15,7 +15,7 @@ const PendingStudents = () => {
   const fetchPendingStudents = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('token');
+      const token = sessionStorage.getItem('token');
       const response = await axios.get('http://localhost:5000/api/pending-students', {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -35,7 +35,7 @@ const PendingStudents = () => {
     if (!window.confirm(`Approve student: ${studentName}?`)) return;
 
     try {
-      const token = localStorage.getItem('token');
+      const token = sessionStorage.getItem('token');
       const response = await axios.put(
         `http://localhost:5000/api/pending-students/${studentId}/approve`,
         {},
@@ -60,7 +60,7 @@ const PendingStudents = () => {
     if (!window.confirm(`Reject and delete student: ${studentName}? This action cannot be undone.`)) return;
 
     try {
-      const token = localStorage.getItem('token');
+      const token = sessionStorage.getItem('token');
       const response = await axios.delete(
         `http://localhost:5000/api/pending-students/${studentId}/reject`,
         { headers: { Authorization: `Bearer ${token}` } }

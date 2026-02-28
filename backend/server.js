@@ -117,10 +117,18 @@ try {
   console.log('Loading logs routes...');
   app.use('/api/logs', require('./api/logs'));
   console.log('✓ Logs routes loaded');
-  
+
+  console.log('Loading labs routes...');
+  app.use('/api/labs', require('./api/labs'));
+  console.log('✓ Labs routes loaded');
+
   console.log('Loading pending students routes...');
   app.use('/api/pending-students', require('./api/pending-students'));
   console.log('✓ Pending students routes loaded');
+
+  console.log('Loading feedback routes...');
+  app.use('/api/feedback', require('./api/feedback'));
+  console.log('✓ Feedback routes loaded');
   
   console.log('Loading chat routes...');
   app.use('/api/chat', require('./api/chat'));

@@ -14,8 +14,8 @@ function StudentAssignments() {
   const [submissionFile, setSubmissionFile] = useState(null)
 
   useEffect(() => {
-    const userData = localStorage.getItem('user')
-    const token = localStorage.getItem('token')
+    const userData = sessionStorage.getItem('user')
+    const token = sessionStorage.getItem('token')
     
     if (!userData || !token) {
       navigate('/signin')
@@ -42,7 +42,7 @@ function StudentAssignments() {
   }
 
   const fetchAssignments = async (courseId) => {
-    const token = localStorage.getItem('token')
+    const token = sessionStorage.getItem('token')
     try {
       const response = await fetch(`http://localhost:5000/api/submissions/course/${courseId}`, {
         headers: { 'Authorization': `Bearer ${token}` }
@@ -62,13 +62,13 @@ function StudentAssignments() {
   }
 
   const handleDownloadAssignment = (assignmentId) => {
-    const token = localStorage.getItem('token')
+    const token = sessionStorage.getItem('token')
     window.open(`http://localhost:5000/api/assignments/${assignmentId}/download?token=${token}`, '_blank')
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const token = localStorage.getItem('token')
+    const token = sessionStorage.getItem('token')
     
     try {
       const formData = new FormData()

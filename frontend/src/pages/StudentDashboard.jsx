@@ -9,6 +9,7 @@ import {
   ChartLine, Users, Star, Warning, Bell, TrendUp, Pulse, ChatCircle
 } from "@phosphor-icons/react";
 import { Chart } from "chart.js/auto";
+import LabPlayer from './LabPlayer';
 
 function StudentDashboard({ user, onLogout }) {
   const navigate = useNavigate()
@@ -38,17 +39,25 @@ function StudentDashboard({ user, onLogout }) {
   // Assignment State
   const [assignments, setAssignments] = useState([])
   const [showSubmitModal, setShowSubmitModal] = useState(false)
-  const [selectedAssignment, setSelectedAssignment] = useState(null)
-  const [submissionText, setSubmissionText] = useState('')
-  const [submissionFile, setSubmissionFile] = useState(null)
+  const [selectedLab, setSelectedLab] = useState(null)
+  const [availableLabs, setAvailableLabs] = useState([])
 
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
 
   useEffect(() => {
     fetchCourses(); fetchAttendance(); fetchGrades();
     fetchTimetable(); fetchProgressReports();
     fetchAvailableClasses(); fetchStudentAssignments();
+    fetchLabs();
   }, [])
+
+  const fetchLabs = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/labs', { headers: { 'Authorization': `Bearer ${token}` } });
+      const data = await response.json();
+      if (data.success) setAvailableLabs(data.labs || []);
+    } catch (error) { console.error('Error fetching labs:', error); }
+  }
 
   // Chart initialization for overview
   useEffect(() => {
@@ -837,6 +846,59 @@ function StudentDashboard({ user, onLogout }) {
             </div>
           </div>
         )
+      case 'labs':
+        return (
+          <div className="animate-fadeIn">
+            {selectedLab ? (
+              <div>
+                <button 
+                  onClick={() => setSelectedLab(null)} 
+                  style={{marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', border: 'none', background: 'transparent', color: '#4f46e5', fontWeight: '700', cursor: 'pointer'}}
+                >
+                  <ArrowLeft weight="bold" /> Back to Labs
+                </button>
+                <div style={{borderRadius: '24px', overflow: 'hidden', border: '1px solid #e2e8f0', background: '#000'}}>
+                   <LabPlayer 
+                     labName={selectedLab.name} 
+                     labId={selectedLab.id} 
+                     url={selectedLab.url}
+                     user={user} 
+                   />
+                </div>
+              </div>
+            ) : (
+              <div>
+                <h2 style={S.sectionTitle}>🔬 Cloud Labs</h2>
+                <p style={S.subtitle}>Access your virtual environments and hands-on practice labs.</p>
+                
+                <div style={{...S.coursesGrid, marginTop: '24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '24px'}}>
+                   {availableLabs.length === 0 ? (
+                     <div style={S.emptyState}>No labs assigned yet.</div>
+                   ) : (
+                     availableLabs.map(lab => (
+                       <div key={lab.id} style={S.courseCard}>
+                          <div style={S.courseCardHeader}>
+                            <div style={{...S.courseIcon, fontSize: '32px', background: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', height: '48px'}}>
+                              {lab.icon || '🔗'}
+                            </div>
+                            <span style={S.availableTag}>Ready</span>
+                          </div>
+                          <h3 style={S.courseTitle}>{lab.name}</h3>
+                          <p style={S.courseDesc}>{lab.description}</p>
+                          <button 
+                            onClick={() => setSelectedLab(lab)}
+                            style={{...S.enrollBtn, marginTop: '16px'}}
+                          >
+                            Start Lab
+                          </button>
+                       </div>
+                     ))
+                   )}
+                </div>
+              </div>
+            )}
+          </div>
+        )
       default: return <div>Select a module</div>
     }
   }
@@ -878,6 +940,8 @@ function StudentDashboard({ user, onLogout }) {
           <SidebarBtn active={activePage === 'assignments'} onClick={() => setActivePage('assignments')} icon={<FileText size={20} />} label="Assignments" count={pendingAssignments} />
           <SidebarBtn active={activePage === 'timetable'} onClick={() => setActivePage('timetable')} icon={<Clock size={20} />} label="Schedule" count={timetable.length} />
           
+          <SidebarBtn active={activePage === 'labs'} onClick={() => setSelectedLab(null) || setActivePage('labs')} icon={<Pulse size={20} weight="duotone" />} label="Cloud Labs" count={null} />
+
           <p style={{...S.navLabel, marginTop:'20px'}}>PERFORMANCE</p>
           <SidebarBtn active={activePage === 'attendance'} onClick={() => setActivePage('attendance')} icon={<CheckCircle size={20} />} label="Attendance" count={attendanceStats.percentage ? attendanceStats.percentage + '%' : null} />
           <SidebarBtn active={activePage === 'grades'} onClick={() => setActivePage('grades')} icon={<GraduationCap size={20} />} label="Results" count={grades.length} />

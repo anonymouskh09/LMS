@@ -15,7 +15,7 @@ function Analytics() {
   const [recentGrades, setRecentGrades] = useState([])
 
   useEffect(() => {
-    const userData = localStorage.getItem('user')
+    const userData = sessionStorage.getItem('user')
     
     if (!userData) {
       navigate('/signin')
@@ -27,7 +27,7 @@ function Analytics() {
   }, [navigate])
 
   const fetchAnalytics = async () => {
-    const token = localStorage.getItem('token')
+    const token = sessionStorage.getItem('token')
     
     // Fetch enrolled courses
     try {

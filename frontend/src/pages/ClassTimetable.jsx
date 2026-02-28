@@ -7,7 +7,7 @@ function ClassTimetable({ user, onBack, classId = null, viewMode = 'student' }) 
   const [classes, setClasses] = useState([]);
   const [selectedClass, setSelectedClass] = useState(classId);
 
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
 
   useEffect(() => {
     if (viewMode === 'admin') {

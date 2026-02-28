@@ -288,4 +288,13 @@ router.post('/teacher/signin', async (req, res) => {
   }
 });
 
+// Verify Token API
+router.get('/verify-token', require('../middleware/auth').verifyToken, (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'Token is valid',
+    user: req.user
+  });
+});
+
 module.exports = router;

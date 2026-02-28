@@ -6,10 +6,12 @@ import {
   Clock, UserCircle, SignOut, CalendarBlank, Trash,
   List, ChalkboardTeacher, UserPlus, X, ClipboardText, Pulse, 
   PencilSimple, FileText, DotsThreeOutline, ChartLine, Users,
+  Warning, Bell, Star, Download, Eye, EyeSlash, TrendUp, Chalkboard
   Warning, Bell, Star, Download, Eye, EyeSlash, TrendUp, ChatCircle
 } from "@phosphor-icons/react";
 import { Chart } from "chart.js/auto";
 import ClassAttendance from './ClassAttendance';
+import Whiteboard from '../components/Whiteboard';
 
 function TeacherDashboard({ user, onLogout }) {
   const navigate = useNavigate()
@@ -39,6 +41,10 @@ function TeacherDashboard({ user, onLogout }) {
   const [newAssignment, setNewAssignment] = useState({ title: '', description: '', course_id: '', due_date: '', max_marks: 100 })
   const [gradeData, setGradeData] = useState({ marks_obtained: '', feedback: '' })
   const [stats, setStats] = useState({ total_courses: 0, total_students: 0, total_classes: 0, total_assignments: 0, total_graded: 0, total_pending: 0, recent_students: [] })
+  
+  // Lab Usage State
+  const [labUsage, setLabUsage] = useState([])
+  const [loadingLabs, setLoadingLabs] = useState(false)
 
   // Timetable State
   const [showTimetableModal, setShowTimetableModal] = useState(false)
@@ -46,7 +52,7 @@ function TeacherDashboard({ user, onLogout }) {
   // Chart references
   const chartRef = useRef(null)
   const chartInstance = useRef(null)
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
   
   useEffect(() => {
     fetchTeacherCourses()
@@ -57,7 +63,22 @@ function TeacherDashboard({ user, onLogout }) {
     if (activePage === 'assignments') {
       fetchAssignments()
     }
+    if (activePage === 'lab-usage') {
+      fetchGlobalLabUsage()
+    }
   }, [activePage])
+
+  const fetchGlobalLabUsage = async () => {
+    setLoadingLabs(true)
+    try {
+      const response = await fetch('http://localhost:5000/api/labs/usage/all', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      })
+      const data = await response.json()
+      if (data.success) setLabUsage(data.usage || [])
+    } catch (error) { console.error('Error fetching lab usage:', error) }
+    finally { setLoadingLabs(false) }
+  }
 
   // Chart initialization for overview
   useEffect(() => {
@@ -391,6 +412,8 @@ function TeacherDashboard({ user, onLogout }) {
           <SidebarBtn active={activePage === 'grades'} onClick={() => setActivePage('grades')} icon={<GraduationCap size={20} />} label="Grades" count={grades.length} />
           <SidebarBtn active={activePage === 'assignments'} onClick={() => setActivePage('assignments')} icon={<FileText size={20} />} label="Assignments" count={totalAssignments} />
           <SidebarBtn active={activePage === 'timetable'} onClick={() => setActivePage('timetable')} icon={<Clock size={20} />} label="Time Table" count={timetable.length} />
+          <SidebarBtn active={activePage === 'whiteboard'} onClick={() => setActivePage('whiteboard')} icon={<Chalkboard size={20} />} label="Live Whiteboard" count={null} />
+          <SidebarBtn active={activePage === 'lab-usage'} onClick={() => setActivePage('lab-usage')} icon={<Pulse size={20} weight="duotone" />} label="Lab Analytics" count={null} />
           <SidebarBtn active={activePage === 'pending'} onClick={() => setActivePage('pending')} icon={<UserPlus size={20} />} label="Pending Requests" count={pendingCount} />
           <SidebarBtn active={activePage === 'profile'} onClick={() => setActivePage('profile')} icon={<UserCircle size={20} />} label="My Profile" count={null} />
         </nav>
@@ -479,7 +502,7 @@ function TeacherDashboard({ user, onLogout }) {
                         <span style={S.scheduleCourse}>{stu.name}</span>
                         <span style={S.scheduleRoom}>Joined: {stu.course_title}</span>
                       </div>
-                      <div style={S.statusBadge} className="animate-fadeIn" style={{ background: '#dcfce7', color: '#166534', padding: '4px 12px', fontSize: '10px' }}>APPROVED</div>
+                      <div className="animate-fadeIn" style={{ ...S.statusBadge, background: '#dcfce7', color: '#166534', padding: '4px 12px', fontSize: '10px' }}>APPROVED</div>
                     </div>
                   )) : (
                     <p style={S.emptySchedule}>No approved students yet</p>
@@ -813,6 +836,60 @@ function TeacherDashboard({ user, onLogout }) {
             </table>
           </div>
         )}
+        {/* LAB USAGE ANALYTICS PAGE */}
+        {activePage === 'lab-usage' && (
+          <div style={S.tableCard} className="table-container animate-fadeIn">
+            <div style={S.tableHeader}>
+              <div>
+                <h2 style={S.tableTitle}>🔬 Cloud Lab Analytics</h2>
+                <p style={S.tableSubtitle}>Track student engagement in cloud labs</p>
+              </div>
+            </div>
+            
+            {loadingLabs ? (
+              <p style={S.emptyState}>Loading lab data...</p>
+            ) : (
+              <table style={S.table}>
+                <thead>
+                  <tr style={S.tableHeadRow}>
+                    <th style={S.th}>STUDENT</th>
+                    <th style={S.th}>LAB NAME</th>
+                    <th style={S.th}>DATE</th>
+                    <th style={S.th}>TIME SPENT</th>
+                    <th style={S.th}>STATUS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {labUsage.map((usage, idx) => (
+                    <tr key={idx} style={S.tableRow}>
+                      <td style={S.tdName}>
+                        {usage.student_name} <br/>
+                        <span style={{fontSize: '11px', color: '#64748b'}}>{usage.roll_number}</span>
+                      </td>
+                      <td style={S.td}>{usage.lab_name}</td>
+                      <td style={S.td}>{new Date(usage.date).toLocaleDateString()}</td>
+                      <td style={S.td}>{usage.time_spent} mins</td>
+                      <td style={S.td}>
+                        <span style={{
+                          ...S.statusBadge, 
+                          background: usage.end_time ? '#dcfce7' : '#fef3c7', 
+                          color: usage.end_time ? '#166534' : '#92400e'
+                        }}>
+                          {usage.end_time ? 'Completed' : 'In Progress'}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                  {labUsage.length === 0 && (
+                    <tr>
+                      <td colSpan="5" style={S.emptyTableCell}>No lab usage history found.</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            )}
+          </div>
+        )}
 
         {/* TIMETABLE PAGE */}
         {activePage === 'timetable' && (
@@ -910,6 +987,17 @@ function TeacherDashboard({ user, onLogout }) {
                 </tbody>
               </table>
             )}
+          </div>
+        )}
+
+        {/* WHITEBOARD PAGE */}
+        {activePage === 'whiteboard' && (
+          <div className="animate-fadeIn">
+            <header style={{ marginBottom: '24px' }}>
+              <h2 style={{ fontSize: '1.8rem', fontWeight: '800', color: '#1e293b', margin: 0 }}>🎨 Live Whiteboard</h2>
+              <p style={{ color: '#64748b', marginTop: '4px' }}>Draw, type and share concepts with your students</p>
+            </header>
+            <Whiteboard />
           </div>
         )}
 
