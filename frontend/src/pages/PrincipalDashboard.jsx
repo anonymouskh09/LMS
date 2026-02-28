@@ -27,7 +27,7 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
   const [newPerson, setNewPerson] = useState({ name: "", email: "", password: "", semester: "1" });
   const [newClass, setNewClass] = useState({ name: "", section: "", academic_year: "2024-2025", teacher_id: "" });
   const [newCourse, setNewCourse] = useState({ title: "", description: "", teacher_id: "", class_id: "" });
-  const [newLab, setNewLab] = useState({ name: "", description: "", icon: "🔬", url: "" });
+  const [newLab, setNewLab] = useState({ name: "", description: "", icon: "🔬", environment: "Python", classId: "" });
   const [editingItem, setEditingItem] = useState(null);
   const [timetables, setTimetables] = useState([]);
   const [showTimetableModal, setShowTimetableModal] = useState(false);
@@ -224,7 +224,7 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
     setNewPerson({ name: "", email: "", password: "", semester: "1" });
     setNewClass({ name: "", section: "", academic_year: "2024-2025", teacher_id: "" });
     setNewCourse({ title: "", description: "", teacher_id: "", class_id: "" });
-    setNewLab({ name: "", description: "", icon: "🔬", url: "" });
+    setNewLab({ name: "", description: "", icon: "🔬", environment: "Python", classId: "" });
     setNewTimetableEntry({
       course_id: '',
       class_id: '',
@@ -1103,14 +1103,30 @@ function PrincipalDashboard({ user = { name: "HOD" }, onLogout }) {
                     />
                   </div>
                   <div style={S.inputGroup}>
-                    <label style={S.inputLabel}>Lab URL</label>
-                    <input 
-                      placeholder="https://antigravity.cloud/labs/..." 
+                    <label style={S.inputLabel}>Lab Environment</label>
+                    <select 
                       required 
-                      value={editingItem ? editingItem.url : newLab.url} 
-                      onChange={e => editingItem ? setEditingItem({...editingItem, url: e.target.value}) : setNewLab({...newLab, url: e.target.value})} 
+                      value={editingItem ? editingItem.environment : newLab.environment} 
+                      onChange={e => editingItem ? setEditingItem({...editingItem, environment: e.target.value}) : setNewLab({...newLab, environment: e.target.value})} 
                       style={S.input}
-                    />
+                    >
+                      <option value="Python">Python Environment</option>
+                      <option value="Node.js">Node.js Environment</option>
+                      <option value="MySQL">MySQL Database</option>
+                      <option value="React">React Framework</option>
+                    </select>
+                  </div>
+                  <div style={S.inputGroup}>
+                    <label style={S.inputLabel}>Assign to Class</label>
+                    <select 
+                      required 
+                      value={editingItem ? editingItem.class_id : newLab.classId} 
+                      onChange={e => editingItem ? setEditingItem({...editingItem, class_id: e.target.value}) : setNewLab({...newLab, classId: e.target.value})} 
+                      style={S.input}
+                    >
+                      <option value="">Select a Class...</option>
+                      {classes.map(c => <option key={c.id} value={c.id}>{c.name} ({c.section})</option>)}
+                    </select>
                   </div>
                   <div style={S.inputGroup}>
                     <label style={S.inputLabel}>Select Icon</label>

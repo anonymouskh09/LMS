@@ -5,10 +5,11 @@ import {
   Clock, UserCircle, SignOut, CalendarBlank, Trash,
   List, ChalkboardTeacher, UserPlus, X, ClipboardText, Pulse, 
   PencilSimple, FileText, DotsThreeOutline, ChartLine, Users,
-  Warning, Bell, Star, Download, Eye, EyeSlash, TrendUp
+  Warning, Bell, Star, Download, Eye, EyeSlash, TrendUp, Chalkboard
 } from "@phosphor-icons/react";
 import { Chart } from "chart.js/auto";
 import ClassAttendance from './ClassAttendance';
+import Whiteboard from '../components/Whiteboard';
 
 function TeacherDashboard({ user, onLogout }) {
   const [activePage, setActivePage] = useState('overview')
@@ -407,6 +408,7 @@ function TeacherDashboard({ user, onLogout }) {
           <SidebarBtn active={activePage === 'grades'} onClick={() => setActivePage('grades')} icon={<GraduationCap size={20} />} label="Grades" count={grades.length} />
           <SidebarBtn active={activePage === 'assignments'} onClick={() => setActivePage('assignments')} icon={<FileText size={20} />} label="Assignments" count={totalAssignments} />
           <SidebarBtn active={activePage === 'timetable'} onClick={() => setActivePage('timetable')} icon={<Clock size={20} />} label="Time Table" count={timetable.length} />
+          <SidebarBtn active={activePage === 'whiteboard'} onClick={() => setActivePage('whiteboard')} icon={<Chalkboard size={20} />} label="Live Whiteboard" count={null} />
           <SidebarBtn active={activePage === 'lab-usage'} onClick={() => setActivePage('lab-usage')} icon={<Pulse size={20} weight="duotone" />} label="Lab Analytics" count={null} />
           <SidebarBtn active={activePage === 'pending'} onClick={() => setActivePage('pending')} icon={<UserPlus size={20} />} label="Pending Requests" count={pendingCount} />
           <SidebarBtn active={activePage === 'profile'} onClick={() => setActivePage('profile')} icon={<UserCircle size={20} />} label="My Profile" count={null} />
@@ -981,6 +983,17 @@ function TeacherDashboard({ user, onLogout }) {
                 </tbody>
               </table>
             )}
+          </div>
+        )}
+
+        {/* WHITEBOARD PAGE */}
+        {activePage === 'whiteboard' && (
+          <div className="animate-fadeIn">
+            <header style={{ marginBottom: '24px' }}>
+              <h2 style={{ fontSize: '1.8rem', fontWeight: '800', color: '#1e293b', margin: 0 }}>🎨 Live Whiteboard</h2>
+              <p style={{ color: '#64748b', marginTop: '4px' }}>Draw, type and share concepts with your students</p>
+            </header>
+            <Whiteboard />
           </div>
         )}
 

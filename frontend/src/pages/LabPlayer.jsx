@@ -15,7 +15,7 @@ const LabPlayer = ({ labName: propLabName, labId: propLabId, url: propUrl, user:
     const labName = propLabName || labId || "Untitled Lab";
     
     // Clean URL: Remove leading semicolons or accidental characters
-    let labUrl = propUrl || `https://antigravity.cloud/labs/${labId}?embed=true`;
+    let labUrl = propUrl || `https://antigravity.codes/labs/${labId}?embed=true`;
     if (labUrl.startsWith(';')) labUrl = labUrl.substring(1);
     // If it's just a domain, ensure it has https
     if (labUrl && !labUrl.startsWith('http')) labUrl = 'https://' + labUrl;

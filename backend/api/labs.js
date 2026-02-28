@@ -1,6 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const { pool } = require('../config/database');
+const { verifyToken } = require('../middleware/auth');
+
+// Environment Mapping
+const ENV_URLS = {
+    'python': 'https://antigravity.codes/embed/python',
+    'node.js': 'https://antigravity.codes/embed/node',
+    'mysql': 'https://antigravity.codes/embed/mysql',
+    'react': 'https://antigravity.codes/embed/react'
+};
 
 // Log lab start
 router.post('/log-start', async (req, res) => {
@@ -81,10 +90,26 @@ router.get('/usage/all', async (req, res) => {
     }
 });
 
-// Get all active labs
-router.get('/', async (req, res) => {
+// Get all active labs (Filtered by class for students)
+router.get('/', verifyToken, async (req, res) => {
     try {
-        const [labs] = await pool.query('SELECT * FROM labs ORDER BY id DESC');
+        let query = 'SELECT * FROM labs';
+        const params = [];
+
+        // If student, only show labs for their classes
+        if (req.user.role === 'student') {
+            query += ' WHERE class_id IN (SELECT class_id FROM student_classes WHERE student_id = ?)';
+            params.push(req.user.id);
+            
+            // Debug logging
+            try {
+                const fs = require('fs');
+                fs.appendFileSync('lab_debug.log', `${new Date().toISOString()} - Student ${req.user.id} requested labs. Query: ${query} Params: ${params.join(',')}\n`);
+            } catch (e) {}
+        }
+
+        query += ' ORDER BY id DESC';
+        const [labs] = await pool.query(query, params);
         res.json({ success: true, labs });
     } catch (error) {
         console.error('Error fetching labs:', error);
@@ -93,12 +118,18 @@ router.get('/', async (req, res) => {
 });
 
 // Create a new lab (Principal/Admin)
-router.post('/', async (req, res) => {
+router.post('/', verifyToken, async (req, res) => {
     try {
-        const { name, description, icon, url } = req.body;
+        const { name, description, icon, environment, classId } = req.body;
+        
+        // Map environment name to URL (case-insensitive)
+        const envKey = environment ? environment.toLowerCase() : 'python';
+        const url = ENV_URLS[envKey] || 'https://antigravity.codes/embed/python'; // fallback
+        const hodId = req.user.id;
+
         await pool.query(
-            'INSERT INTO labs (name, description, icon, url) VALUES (?, ?, ?, ?)',
-            [name, description, icon, url]
+            'INSERT INTO labs (name, description, icon, url, class_id, hod_id) VALUES (?, ?, ?, ?, ?, ?)',
+            [name, description, icon, url, classId, hodId]
         );
         res.json({ success: true, message: 'Lab created successfully' });
     } catch (error) {
