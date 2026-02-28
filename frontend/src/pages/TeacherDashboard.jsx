@@ -498,7 +498,7 @@ function TeacherDashboard({ user, onLogout }) {
                         <span style={S.scheduleCourse}>{stu.name}</span>
                         <span style={S.scheduleRoom}>Joined: {stu.course_title}</span>
                       </div>
-                      <div style={S.statusBadge} className="animate-fadeIn" style={{ background: '#dcfce7', color: '#166534', padding: '4px 12px', fontSize: '10px' }}>APPROVED</div>
+                      <div className="animate-fadeIn" style={{ ...S.statusBadge, background: '#dcfce7', color: '#166534', padding: '4px 12px', fontSize: '10px' }}>APPROVED</div>
                     </div>
                   )) : (
                     <p style={S.emptySchedule}>No approved students yet</p>
